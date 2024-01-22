@@ -46,7 +46,7 @@ func parseOperand(s string) Operand {
 	result.roman = false
 
 	val, err := strconv.Atoi(s)
-	if val <= 0 && val > 10 {
+	if val <= 0 || val > 10 {
 		panic("Операнд должен быть в диапазоне от 1 до 10 или от I до X.")
 	}
 	if err != nil {
