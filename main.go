@@ -46,9 +46,6 @@ func parseOperand(s string) Operand {
 	result.roman = false
 
 	val, err := strconv.Atoi(s)
-	if val <= 0 || val > 10 {
-		panic("Операнд должен быть в диапазоне от 1 до 10 или от I до X.")
-	}
 	if err != nil {
 		if re.MatchString(s) {
 			digits := re.FindAllStringSubmatch(s, 1)
@@ -70,6 +67,9 @@ func parseOperand(s string) Operand {
 		} else {
 			panic("Формат математической операции не удовлетворяет заданию — два операнда и один оператор (+, -, /, *).")
 		}
+	}
+	if val <= 0 || val > 10 {
+		panic("Операнд должен быть в диапазоне от 1 до 10 или от I до X.")
 	}
 
 	result.value = val
